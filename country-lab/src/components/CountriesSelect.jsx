@@ -1,7 +1,8 @@
 import React from "react";
 import CountriesItem from "./CountryItem";
 
-const CountriesSelect = () => {
+const CountriesSelect = ({countries}) => {
+    
 
     return (
         <>
