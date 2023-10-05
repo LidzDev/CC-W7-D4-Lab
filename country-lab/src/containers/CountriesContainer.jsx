@@ -7,6 +7,7 @@ import CountryDetail from "../components/CountryDetail";
     const CountriesContainer = () => {
     const [countries, setCountries] = useState([])
     const [selectedCountry, setSelectedCountry] = useState(null)
+    const [favCountryList, setFavCountryList] = useState([])
 
     const getCountries = function(){
         fetch('https://restcountries.com/v3.1/all')
@@ -17,8 +18,20 @@ import CountryDetail from "../components/CountryDetail";
 
     const onCountrySelected = (index) => {
         setSelectedCountry(countries[index])
-
     }
+
+    const saveNewFav = (evt) => {
+        //where we left off
+    }
+    
+    // const saveNewFav = (evt) => {
+    //     evt.preventDefault();
+    //     let selectedCountryIndex = evt.target.name
+    //     const favCountryListCopy = [... favCountryList]
+    //     favCountryListCopy.push({name: newFav})
+    //     setFav
+
+    // }
 
     useEffect(() => {
         getCountries()
@@ -26,16 +39,15 @@ import CountryDetail from "../components/CountryDetail";
 
     return (
         <>
-        <h2>this is the country container</h2>
+            <h2>this is the country container</h2>
+            {countries ? <TotalPopulation countries={countries}/> : null}
         
-        {countries ? <TotalPopulation countries={countries}/> : null}
-        
-        {countries ? <CountriesSelect countries={countries} 
-        onCountrySelected={onCountrySelected}/> : null}
+            {countries ? <CountriesSelect countries={countries} 
+            onCountrySelected={onCountrySelected}/> : null}
 
-        {selectedCountry ? <CountryDetail country={selectedCountry}/>: null}
+            {selectedCountry ? <CountryDetail country={selectedCountry}/>: null}
 
-        <FavCountries/>
+            <FavCountries/>
         </>
     )
 }

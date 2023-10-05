@@ -17,6 +17,8 @@ const CountryDetail = ({country}) => {
                 Currency: {currencyName}
             </li>
         </ol>
+        <button>Add to Favourites</button> 
+            {/* where we left off */}
         
         </>
     )
