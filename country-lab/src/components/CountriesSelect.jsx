@@ -1,13 +1,21 @@
 import React from "react";
-import CountriesItem from "./CountryItem";
+import CountryItem from "./CountryItem";
 
-const CountriesSelect = ({countries}) => {
-    
+const CountriesSelect = ({countries, onCountrySelected}) => {
+
+    const CountryDropdown = countries.map((country, index) => {
+        return <CountryItem country={country} index={index} key={index}/>
+    })
+
+    const handleSelectChange = (evt) => {
+        onCountrySelected(evt.target.value)
+    }
 
     return (
         <>
-        <h3>this is the country select</h3>
-        <CountriesItem/>
+        <select id="countryList" name="countryList" onChange={handleSelectChange}>
+        {CountryDropdown}
+        </select>
         </>
     )
 }

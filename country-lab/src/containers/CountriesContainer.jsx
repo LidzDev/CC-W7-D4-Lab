@@ -2,8 +2,9 @@ import React, {useState, useEffect} from "react";
 import CountriesSelect from "../components/CountriesSelect";
 import TotalPopulation from "../components/TotalPopulation";
 import FavCountries from "../components/FavCountries";
+import CountryDetail from "../components/CountryDetail";
 
-const CountriesContainer = () => {
+    const CountriesContainer = () => {
     const [countries, setCountries] = useState([])
     const [selectedCountry, setSelectedCountry] = useState(null)
 
@@ -14,6 +15,11 @@ const CountriesContainer = () => {
         .catch((error) => console.log(`error loading data; ${error}`))
     }
 
+    const onCountrySelected = (index) => {
+        setSelectedCountry(countries[index])
+
+    }
+
     useEffect(() => {
         getCountries()
     }, [])
@@ -21,8 +27,14 @@ const CountriesContainer = () => {
     return (
         <>
         <h2>this is the country container</h2>
-        <TotalPopulation/>
-        {countries ? <CountriesSelect countries={countries}/> : null}
+        
+        {countries ? <TotalPopulation countries={countries}/> : null}
+        
+        {countries ? <CountriesSelect countries={countries} 
+        onCountrySelected={onCountrySelected}/> : null}
+
+        {selectedCountry ? <CountryDetail country={selectedCountry}/>: null}
+
         <FavCountries/>
         </>
     )

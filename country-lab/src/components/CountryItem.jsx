@@ -1,12 +1,14 @@
 import React from "react";
 
-const CountriesItem = () => {
+const CountryItem = ({country, index}) => {
 
     return (
         <>
-        <h4>this is the country item</h4>
+        <option id={index} value={index}>
+            {country.name.common}
+        </option>
         </>
     )
 }
 
-export default CountriesItem
+export default CountryItem

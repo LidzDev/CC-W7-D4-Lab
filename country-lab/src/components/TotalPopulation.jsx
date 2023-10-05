@@ -1,10 +1,18 @@
 import React from "react";
 
-const TotalPopulation = () => {
 
+const TotalPopulation = ({countries}) => {
+    let populationNumber = 0
+    let runningTotal = countries.map((country) => {
+        let countryPopulation = Number(country.population)
+        populationNumber += countryPopulation
+        return populationNumber
+    })    
+    
+    console.log(populationNumber)
     return (
         <>
-        <h3>this is the world population</h3>
+        <h3>The world population is {populationNumber}</h3>
         </>
     )
 }
